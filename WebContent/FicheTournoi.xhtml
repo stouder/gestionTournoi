@@ -36,7 +36,7 @@
 						</p:column>
 						<p:column headerText="Tete de Serie" out="test1">
 							<h:form id="form">
-								<p:selectOneMenu value="#{ficheTournoiBean.testSelected}">
+								<p:selectOneMenu value="#{ficheTournoiBean.testSelected}"  width="30">
 									<f:selectItem itemLabel="1" itemValue="1"></f:selectItem>
 									<f:selectItem itemLabel="2" itemValue="2"></f:selectItem>
 									<p:ajax event="change" listener="#{ficheTournoiBean.serviceChange}"

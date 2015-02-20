@@ -44,7 +44,7 @@ public class SelectOneMenuView {
 	public List<Rencontre> getRencontres() {
 		return rencontres;
 	}
-
+  
 	public void setRencontres(List<Rencontre> rencontres) {
 		this.rencontres = rencontres;
 	}
