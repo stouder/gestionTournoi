@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#Connexion.xhtml" PATH="/Connexion.xhtml"
+  SHAPE="115,159,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Connexion.xhtml:0" NAME="item"
+   PATH="/Connexion.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="test::#test.xhtml" NAME="output"
+    PATH="/test.xhtml" TARGET="rules:#test.xhtml" TITLE="test" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#test.xhtml" PATH="/test.xhtml"
+  SHAPE="447,114,0,0" model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#FicheOrganisteur.xhtml"
+  PATH="/FicheOrganisteur.xhtml" SHAPE="166,389,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#FicheOrganisteur.xhtml:0" NAME="item"
+   PATH="/FicheOrganisteur.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="tournoi::#FicheTournoi.xhtml" NAME="output"
+    PATH="/FicheTournoi.xhtml" TARGET="rules:#FicheTournoi.xhtml"
+    TITLE="tournoi" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#FicheTournoi.xhtml"
+  PATH="/FicheTournoi.xhtml" SHAPE="730,423,0,0"
+  model-entity="JSFProcessGroup" persistent="true"/>
+</PROCESS>

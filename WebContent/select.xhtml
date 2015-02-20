@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link type="text/css" rel="stylesheet" href="themes/bluesky/skin.css" />
+</h:head>
+<h:body>
+	<center>
+		<h:form>
+			<p:messages autoUpdate="true" />
+
+			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+
+
+				<p:outputLabel for="advanced" value="Advanced:" />
+				<p:selectOneMenu id="advanced"
+					value="#{selectOneMenuView.rencontre}" converter="rencontreConverter"
+					panelStyle="width:180px" effect="fade" var="t" style="width:160px"
+					filter="true" filterMatchMode="startsWith">
+					<f:selectItems value="#{selectOneMenuView.rencontres}" var="theme"
+						itemLabel="#{theme.nom}" itemValue="#{theme}" />
+
+					<p:column>
+						<h:outputText value="#{t.nom}" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{t.id}" />
+					</p:column>
+				</p:selectOneMenu>
+			</h:panelGrid>
+			
+			<p:commandButton value="Valider" type="submit"
+				action="#{ajout.valider}"></p:commandButton>
+			
+			<!-- 			<p:commandButton value="Submit" update="display" -->
+			<!-- 				oncomplete="PF('dlg').show()" icon="ui-icon-check" /> -->
+
+			<p:dialog header="Values" modal="true" showEffect="bounce"
+				widgetVar="dlg" resizable="false">
+				<p:panelGrid columns="2" id="display" columnClasses="label,value">
+
+					<h:outputText value="Advanced:" />
+					<h:outputText value="#{selectOneMenuView.rencontre.nom}" />
+				</p:panelGrid>
+			</p:dialog>
+		</h:form>
+	</center>
+</h:body>
+</html>

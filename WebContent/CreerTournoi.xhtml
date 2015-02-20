@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link type="text/css" rel="stylesheet" href="themes/bluesky/skin.css" />
+</h:head>
+
+<h:body>
+	<h:form>
+	<p:messages autoUpdate="true" />
+		<p:panelGrid>
+			<p:row>
+				<p:column>
+					<p:outputLabel value="Nom"></p:outputLabel>
+				</p:column>
+				<p:column>
+					<p:inputText value="#{tournoiBean.nom}" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>
+					<p:outputLabel value="Nombre d'Inscrit"></p:outputLabel>
+				</p:column>
+				<p:column>
+					<p:inputText value="#{tournoiBean.nbInscrit}" />
+				</p:column>
+			</p:row>
+			
+			<p:row>
+				<p:column colspan="2">
+					<p:commandButton value="Valider" type="submit"
+						action="#{tournoiBean.valider}"></p:commandButton>
+				</p:column>
+			</p:row>
+		</p:panelGrid>
+	</h:form>
+
+</h:body>
+</html>
