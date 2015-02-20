@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import com.gestionTournoi.metiers.Inscription;
 import com.primefaces.perso.ListeInscrits;
@@ -62,11 +64,19 @@ public class FicheTournoiBean {
 	}
 
 	public void serviceChange(){
-		if(list.add(testSelected) == false)
+		if(list.add(testSelected) == false){
 			System.out.println("Element "+ testSelected +" deja dans la liste");
+			FacesContext context = FacesContext.getCurrentInstance();
+			FacesMessage message = new FacesMessage();
+			message.setSummary("Element "+ testSelected +" deja dans la liste");
+			context.addMessage(null, message);
+		}
+		
 		System.out.println("Change");
 		for(String el:list){
 			System.out.println("Liste Test de serie" + el);
 		}
+		
+
 	}
 }
