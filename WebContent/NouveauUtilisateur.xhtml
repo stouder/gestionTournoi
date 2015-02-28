@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/layout.xhtml">
+	<ui:define name="header">Nouvel Utilisateur</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<p:panelGrid styleClass="panelGridCenter">
+				<p:row>
+					<p:column>
+						<p:outputLabel value="Nom"></p:outputLabel>
+					</p:column>
+					<p:column>
+						<p:inputText id="login" value="#{nouveauUtilisateur.login}">
+						</p:inputText>
+					</p:column>
+
+				</p:row>
+
+				<p:row>
+					<p:column>
+						<p:outputLabel value="Mot de Passe"></p:outputLabel>
+					</p:column>
+					<p:column>
+						<p:password id="mdp" value="#{nouveauUtilisateur.mdp}"></p:password>
+					</p:column>
+
+				</p:row>
+
+				<p:row>
+					<p:column colspan="2">
+						<p:outputLabel for="type" value="Type:" />
+						<h:selectOneMenu id="type" style="width:125px"
+							value="#{nouveauUtilisateur.type}">
+							<f:selectItem itemLabel="Participant" itemValue="Participant" />
+							<f:selectItem itemLabel="Organisateur" itemValue="Organisateur" />
+							<f:selectItem itemLabel="Arbitre" itemValue="Arbitre" />
+						</h:selectOneMenu>
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column colspan="2">
+						<p:commandButton value="Valider" type="submit"
+							action="#{nouveauUtilisateur.enregistrer}"></p:commandButton>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+
+		</h:form>
+
+		<p:messages></p:messages>
+	</ui:define>
+</ui:composition>
+
+</html>

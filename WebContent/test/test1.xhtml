@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+ 
+<!-- <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml"> -->
+<!-- 	<ui:define name="content"> -->
+		<form name="loginForm" method="post" action="j_security_check">
+			<h3>Espace d'identification</h3>
+			<h:panelGrid columns="2">
+				<h:outputLabel for="j_username">Login </h:outputLabel>
+				<h:inputText id="j_username" name="j_username" required="true" />
+				<h:message for="j_username" />
+				<br />
+				<h:outputLabel for="j_password">Password </h:outputLabel>
+				<h:inputSecret id="j_password" name="j_password" required="true" />
+				<h:message for="j_password" />
+			</h:panelGrid>
+			<br /> <input type="submit" name="submit" value="Login" />
+		</form>
+<!-- 	</ui:define> -->
+<!-- </ui:composition> -->
+</html>

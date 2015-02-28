@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:util="http://java.sun.com/jsf/composite/component"
+	xmlns:p="http://primefaces.org/ui">
+
+<p:panel
+	style="width:650px;margin:40px 0 0 0;padding:0 0 0 0;background-color:#f0f0f0">
+	<form name="logInForm" action="j_security_check" method="POST">
+		<p:panelGrid id="login" style="height:230px;padding:0;margin:0">
+			<p:row>
+				<p:column styleClass="img" rowspan="6">
+				</p:column>
+				<p:column colspan="2" style="height:100px">
+					<h:outputText
+						value="login_text" />
+					<br />
+					<br />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column style="width:130px">
+					<h:outputText
+						value="login_user"
+						styleClass="label" />
+				</p:column>
+				<p:column>
+					<p:inputText id="j_username" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>
+					<h:outputText
+						value="login_password"
+						styleClass="label" />
+				</p:column>
+				<p:column>
+					<p:password id="j_password" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>
+				</p:column>
+				<p:column style="vertical-align:top">
+					<p:commandButton
+						value="login_submit"
+						rendered="false" />
+					<input type="submit" value="Connecter" />
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column></p:column>
+			</p:row>
+		</p:panelGrid>
+		<p:focus />
+	</form>
+</p:panel>
+
+</html>
