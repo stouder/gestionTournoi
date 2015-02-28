@@ -1,25 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS model-entity="JSFProcess">
- <PROCESS-ITEM NAME="rules:#Connexion.xhtml" PATH="/Connexion.xhtml"
-  SHAPE="115,159,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#Connexion.xhtml:0" NAME="item"
-   PATH="/Connexion.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="test::#test.xhtml" NAME="output"
-    PATH="/test.xhtml" TARGET="rules:#test.xhtml" TITLE="test" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#test.xhtml" PATH="/test.xhtml"
-  SHAPE="447,114,0,0" model-entity="JSFProcessGroup" persistent="true"/>
  <PROCESS-ITEM NAME="rules:#FicheOrganisteur.xhtml"
-  PATH="/FicheOrganisteur.xhtml" SHAPE="166,389,0,0" model-entity="JSFProcessGroup">
+  PATH="/FicheOrganisteur.xhtml" SHAPE="344,368,50,57" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#FicheOrganisteur.xhtml:0" NAME="item"
    PATH="/FicheOrganisteur.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="tournoi::#FicheTournoi.xhtml" NAME="output"
     PATH="/FicheTournoi.xhtml" TARGET="rules:#FicheTournoi.xhtml"
     TITLE="tournoi" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="creerTournoi::#CreerTournoi.xhtml"
+    NAME="output1" PATH="/CreerTournoi.xhtml"
+    TARGET="rules:#CreerTournoi.xhtml" TITLE="creerTournoi" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#FicheTournoi.xhtml"
-  PATH="/FicheTournoi.xhtml" SHAPE="730,423,0,0"
+  PATH="/FicheTournoi.xhtml" SHAPE="544,352,50,25"
   model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#NouveauUtilisateur.xhtml"
+  PATH="/NouveauUtilisateur.xhtml" SHAPE="512,56,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#NouveauUtilisateur.xhtml:0" NAME="item"
+   PATH="/NouveauUtilisateur.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="participant::#InscriptionTournoi.xhtml"
+    NAME="output" PATH="/InscriptionTournoi.xhtml"
+    TARGET="rules:#InscriptionTournoi.xhtml" TITLE="participant" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="organisateur::#FicheOrganisteur.xhtml"
+    NAME="output1" PATH="/FicheOrganisteur.xhtml"
+    TARGET="rules:#FicheOrganisteur.xhtml" TITLE="organisateur" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#InscriptionTournoi.xhtml"
+  PATH="/InscriptionTournoi.xhtml" SHAPE="808,344,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#CreerTournoi.xhtml"
+  PATH="/CreerTournoi.xhtml" SHAPE="544,408,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#admin#test.xhtml" PATH="/admin/test.xhtml"
+  SHAPE="232,272,50,25" model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+  SHAPE="32,232,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#index.xhtml:0" NAME="item"
+   PATH="/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="new::#NouveauUtilisateur.xhtml"
+    NAME="output" PATH="/NouveauUtilisateur.xhtml"
+    TARGET="rules:#NouveauUtilisateur.xhtml" TITLE="new" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="admin::#admin#test.xhtml" NAME="output1"
+    PATH="/admin/test.xhtml" TARGET="rules:#admin#test.xhtml"
+    TITLE="admin" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="joueur::#Participant#FicheJoueur.xhtml"
+    NAME="output2" PATH="/Participant/FicheJoueur.xhtml"
+    TARGET="rules:#Participant#FicheJoueur.xhtml" TITLE="joueur" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#Participant#FicheJoueur.xhtml"
+  PATH="/Participant/FicheJoueur.xhtml" SHAPE="336,504,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Participant#FicheJoueur.xhtml:0" NAME="item"
+   PATH="/Participant/FicheJoueur.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="inscription::#InscriptionTournoi.xhtml"
+    NAME="output" PATH="/InscriptionTournoi.xhtml"
+    TARGET="rules:#InscriptionTournoi.xhtml" TITLE="inscription" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

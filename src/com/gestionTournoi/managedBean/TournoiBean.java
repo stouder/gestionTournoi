@@ -41,7 +41,7 @@ public class TournoiBean {
 		Tournoi tournoi =  new Tournoi();
 		tournoi.setNom(nom);
 		tournoi.setNbInscrit(nbInscrit);
-
+		
 		TournoiDAO tDAO = new TournoiDAO();
 		tDAO.setSession(s);
 		tDAO.insert(tournoi);

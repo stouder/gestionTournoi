@@ -22,8 +22,8 @@ public class TournoiConverter implements Converter {
 				
 				Tournoi tournoi = null;
 				int val = Integer.parseInt(value);
-				System.out.println("valeur index " + val);
-				System.out.println("Tournoi " + service.getTournois());
+				//System.out.println("valeur index " + val);
+				//System.out.println("Tournoi " + service.getTournois());
 				for(Tournoi t:service.getTournois()){
 					
 					if(t.getId() == val){

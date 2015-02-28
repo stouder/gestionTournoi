@@ -1,58 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<link type="text/css" rel="stylesheet" href="themes/bluesky/skin.css" />
-</h:head>
 
-<h:body>
-	<h:form>
-	<p:messages autoUpdate="true" />
-		<p:panelGrid>
-			<p:row>
-				<p:column>
-					<p:outputLabel value="Nom"></p:outputLabel>
-				</p:column>
-				<p:column>
-					<p:inputText value="#{selectRencontre.nom}" />
-				</p:column>
-			</p:row>
-			<p:row>
-				<p:column>
-					<p:outputLabel value="Rencontre" />
-				</p:column>
-				<p:column>
-					<p:selectOneMenu id="advanced" value="#{selectRencontre.rencontre}" converter="rencontreConverter"
-						panelStyle="width:180px" effect="fade" var="t" style="width:160px"
-						filter="true" filterMatchMode="startsWith">
 
-						<f:selectItems value="#{selectRencontre.rencontres}"
-							var="rencontre" itemLabel="#{rencontre.nom}"
-							itemValue="#{rencontre}" />
-						<p:column>
-							<h:outputText value="#{t.nom}" />
-						</p:column>
-						<p:column>
-							<h:outputText value="#{t.id}" />
-						</p:column>
-						
-					</p:selectOneMenu>
-				</p:column>
-			</p:row>
-			
-			<p:row>
-				<p:column colspan="2">
-					<p:commandButton value="Valider" type="submit"
-						action="#{selectRencontre.valider}"></p:commandButton>
-				</p:column>
-			</p:row>
-		</p:panelGrid>
-	</h:form>
 
-</h:body>
+<ui:composition template="/template/layout.xhtml">
+	<ui:define name="header">Page de présentation</ui:define>
+	<ui:define name="content">
+		<h:panelGroup layout="block" id="container" class="panelGridCenter">
+			<a href="Participant/FicheJoueur.xhtml">Accéder à la page
+				sécurisée</a>
+			<br></br>
+			<p:link outcome="new" value="Nouveau Utilisateur"></p:link>
+			<br></br>
+			<p:link outcome="admin" value="administration"></p:link>
+			<br></br>
+			<p:link outcome="joueur" value="Participant"></p:link>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>
+
 </html>

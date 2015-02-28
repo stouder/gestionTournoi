@@ -23,7 +23,8 @@ public class InscriptionBean {
 	private Tournoi tournoi;
 	private List<Tournoi> tournois;
 	private String nom;
-
+	private String classement;
+	
 	@ManagedProperty("#{listeTournois}")
 	private ListeTournois service;
 
@@ -56,6 +57,14 @@ public class InscriptionBean {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	
+	public String getClassement() {
+		return classement;
+	}
+
+	public void setClassement(String classement) {
+		this.classement = classement;
+	}
 
 	public ListeTournois getService() {
 		return service;
@@ -66,26 +75,20 @@ public class InscriptionBean {
 	}
 
 	public String valider(){
-		
 		HttpSession httpSession = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 		SessionFactory sf = (SessionFactory)httpSession.getServletContext().getAttribute("EntityManager");
 		Session session = sf.openSession();
 		
-		Participant p1 = new Participant();
-		p1.setNom("Fabien 1");
-		
-		ParticipantDAO pDAO = new ParticipantDAO();
-		pDAO.setSession(session);
-		pDAO.insert(p1);
+		Participant p = (Participant)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("personne");
 		
 		InscriptionDAO iDAO = new InscriptionDAO();
 		iDAO.setSession(session);
+		iDAO.dejaInscrit(p);
 		Inscription inscription = new Inscription();
 		inscription.setTournoi(tournoi);
-		inscription.setParticpant(p1);
-		
-		System.out.println("Tournoi : " + tournoi);
-		
+		inscription.setParticpant(p);
+		inscription.setClassement(classement);
+	
 		iDAO.insert(inscription);
 		
 		return null;

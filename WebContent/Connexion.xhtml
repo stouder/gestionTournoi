@@ -6,15 +6,21 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
+<h:head>
+	<link type="text/css" rel="stylesheet" href="themes/bluesky/skin.css" />
+	<link type="text/css" rel="stylesheet" href="CSS/ficheOrganisateur.css" />
+</h:head>
+
 <h:body>
 	<h:form>
-		<p:panelGrid>
+		<p:panelGrid styleClass="panelGridCenter">
 			<p:row>
 				<p:column>
 					<p:outputLabel value="Nom"></p:outputLabel>
 				</p:column>
 				<p:column>
-					<p:inputText id="login" value="#{loginBean.login}"> </p:inputText>
+					<p:inputText id="login" value="#{loginBean.login}">
+					</p:inputText>
 				</p:column>
 
 			</p:row>
@@ -27,15 +33,30 @@
 				</p:column>
 
 			</p:row>
+
 			<p:row>
 				<p:column colspan="2">
-					<p:commandButton value="Valider" type="submit" action="#{loginBean.valider}"></p:commandButton>
+					<p:commandButton value="Valider" type="submit"
+						action="#{loginBean.valider}"></p:commandButton>
 				</p:column>
 			</p:row>
 		</p:panelGrid>
 
 	</h:form>
 
+	<h:panelGroup layout="block" id="container" class="panelGridCenter">
+		<p:link outcome="new" value="Nouveau Utilisateur">
+			<f:param name="productId" />
+		</p:link>
+		<p:link outcome="test" value="administration">
+			<f:param name="productId" />
+		</p:link>
+		
+	</h:panelGroup>
+	
+
+
+	<p:messages></p:messages>
 
 </h:body>
 </html>

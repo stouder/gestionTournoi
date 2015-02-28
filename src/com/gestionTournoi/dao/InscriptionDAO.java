@@ -40,7 +40,7 @@ public class InscriptionDAO implements GenericDAO<Inscription> {
 //			System.out.println("Nom des inscrits : " + p.getNom());
 //		}
 		
-		Query req1 = session.createQuery("from Inscription");
+		Query req1 = session.createQuery("from Inscription i order by i.classement");
 		List<Inscription> list = req1.list();
 		for(Inscription i:list){
 			System.out.println("i" + i.getParticpant().getNom());
@@ -48,5 +48,27 @@ public class InscriptionDAO implements GenericDAO<Inscription> {
 		
 		return list;
 	}
-
+	
+	public void update(Inscription Object) {
+		System.out.println("update");
+		Transaction tx = session.beginTransaction();
+		session.saveOrUpdate(Object);
+		tx.commit();
+	}
+	
+	public boolean dejaInscrit(Participant p){
+		Query q1 = session.createQuery("from Inscription i where i.particpant = " +p.getId());
+		List<Inscription> list = q1.list();
+		
+		for(Inscription i:list)
+			System.out.println("Premier element de la liste " + i.getId());
+		
+		if(list.size() == 0){
+			System.out.println("Pas Present");
+			return false;
+		}else{
+			System.out.println("Present");
+			return true;
+		}
+	}
 }

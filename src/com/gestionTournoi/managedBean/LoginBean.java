@@ -1,5 +1,6 @@
 package com.gestionTournoi.managedBean;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -9,6 +10,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.gestionTournoi.dao.PersonneDAO;
+import com.gestionTournoi.metiers.Organisateur;
+import com.gestionTournoi.metiers.Participant;
 import com.gestionTournoi.metiers.Personne;
 
 @ManagedBean
@@ -38,22 +41,27 @@ public class LoginBean {
 		PersonneDAO pDAO = new PersonneDAO();
 		pDAO.setSession(session);
 		Personne personne = (Personne)pDAO.login(login,mdp);
+		session.close();
 		
-		//System.out.println("Personne :" + personne.getId());
-		
-		if(personne != null){
-			System.out.println("Yes");
-			return "test";
-		}
-		else{
-			System.out.println("No!!!");
+		if(personne instanceof Participant){
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("personne", personne);
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("conn", true);
+			return "participant";	
+		}else if(personne instanceof Organisateur){
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("personne", personne);
+			return "organisateur";
+		}else{
+			FacesMessage msg = new FacesMessage("Erreur de login ou de mot de passe");
+			FacesContext context = FacesContext.getCurrentInstance();
+			context.addMessage(null, msg);
+			
 			return "null";
 		}
 		
-//		if(login.equals("login") && mdp.equals("mdp"))
-//			return "login";
-//		else
-//			return "paslogin";
 	}
 	
+	public String nouveauUtilisateur(){
+		System.out.println("Yes pour le nouveau");
+		return "new";
+	}
 }

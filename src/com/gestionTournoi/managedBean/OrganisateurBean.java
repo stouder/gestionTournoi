@@ -51,4 +51,8 @@ public class OrganisateurBean {
 	public String valider(){
 		return "tournoi";
 	}
+	
+	public String creerTournoi(){
+		return "creerTournoi";
+	}
 }

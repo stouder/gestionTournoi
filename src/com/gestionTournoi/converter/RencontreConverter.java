@@ -22,6 +22,7 @@ public class RencontreConverter implements Converter {
 				Rencontre rencontre = null;
 				int val = Integer.parseInt(value);
 				System.out.println("valeur index " + val);
+				
 				for(Rencontre r:service.getRencontres()){
 					
 					if(r.getId() == val){

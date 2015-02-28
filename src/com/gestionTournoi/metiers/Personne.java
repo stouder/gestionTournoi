@@ -1,6 +1,8 @@
 package com.gestionTournoi.metiers;
 
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,9 +23,10 @@ public class Personne {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id_personne", unique = true, nullable = false)
 	private int id;
-	
+//	
 	@Column(name="Nom")
 	private String nom;
+	
 	
 	@Column(name="login")
 	private String login;

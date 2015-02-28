@@ -6,14 +6,16 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
+	
 <h:head>
 	<link type="text/css" rel="stylesheet" href="themes/bluesky/skin.css" />
+	<link type="text/css" rel="stylesheet" href="CSS/ficheOrganisateur.css" />
 </h:head>
 
 <h:body>
 	<h:form>
 		<p:messages autoUpdate="true" />
-		<p:panelGrid>
+		<p:panelGrid styleClass="panelGridCenter">
 			<p:row>
 				<p:column>
 					<p:selectOneMenu id="advanced" value="#{tirageBean.tournoi}"

@@ -20,12 +20,22 @@ public class Inscription {
 	private Participant particpant;
 	@Column
 	private int fraisInscription;
+	@Column
+	private String teteDeSerie;
+	@Column
+	private String classement;
 	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public String getTeteDeSerie() {
+		return teteDeSerie;
+	}
+	public void setTeteDeSerie(String teteDeSerie) {
+		this.teteDeSerie = teteDeSerie;
 	}
 	public Tournoi getTournoi() {
 		return tournoi;
@@ -38,6 +48,18 @@ public class Inscription {
 	}
 	public void setParticpant(Participant particpant) {
 		this.particpant = particpant;
+	}
+	public int getFraisInscription() {
+		return fraisInscription;
+	}
+	public void setFraisInscription(int fraisInscription) {
+		this.fraisInscription = fraisInscription;
+	}
+	public String getClassement() {
+		return classement;
+	}
+	public void setClassement(String classement) {
+		this.classement = classement;
 	}
 		
 }

@@ -5,7 +5,7 @@
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost/gestion1" />
+		<property name="url" value="jdbc:mysql://localhost/gestion2" />
 		<property name="username" value="root" />
 		<property name="password" value="maxwell" />
 	</bean>
