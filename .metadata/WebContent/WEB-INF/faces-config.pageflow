@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14184647545690" configfile="/GestionTournoi/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="enregistrement.xhtml" x="338" y="178" id="pf14184647884201" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" outlinks="pf14184647884202" inlinks="pf14184647884203" path="/enregistrement.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Organisateur.xhtml" x="554" y="380" id="pf14184647884204" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" outlinks="pf14184647884205" inlinks="pf14184647884202 pf14184647884206" path="/Organisateur.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Tirage.xhtml" x="770" y="380" id="pf14184647884207" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14184647884205" path="/Tirage.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Index.xhtml" x="122" y="380" id="pf14184647884208" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" outlinks="pf14184647884206 pf14184647884203 pf14184647884209" inlinks="pf14184647884209" path="/Index.xhtml"/>
+  <links id="pf14184647884202" target="pf14184647884204" source="pf14184647884201"/>
+  <links id="pf14184647884205" target="pf14184647884207" source="pf14184647884204" outcome="tirage"/>
+  <links id="pf14184647884206" target="pf14184647884204" source="pf14184647884208" outcome="login"/>
+  <links id="pf14184647884203" target="pf14184647884201" source="pf14184647884208" outcome="enregistrer"/>
+  <links id="pf14184647884209" target="pf14184647884208" source="pf14184647884208" outcome="erreur">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+</pageflow:Pageflow>
