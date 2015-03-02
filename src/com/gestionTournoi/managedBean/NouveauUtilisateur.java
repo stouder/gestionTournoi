@@ -7,10 +7,15 @@ import javax.servlet.http.HttpSession;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import com.gestionTournoi.dao.LoginDAO;
 import com.gestionTournoi.dao.OrganisateurDAO;
 import com.gestionTournoi.dao.ParticipantDAO;
+import com.gestionTournoi.dao.RolesDAO;
+import com.gestionTournoi.metiers.Login;
 import com.gestionTournoi.metiers.Organisateur;
 import com.gestionTournoi.metiers.Participant;
+import com.gestionTournoi.metiers.RolePK;
+import com.gestionTournoi.metiers.Roles;
 
 @ManagedBean
 public class NouveauUtilisateur {
@@ -58,6 +63,27 @@ public class NouveauUtilisateur {
 		if(type.equals("Participant")){
 			ParticipantDAO pDAO = new ParticipantDAO();
 			pDAO.setSession(session);
+			
+			LoginDAO lDAO = new LoginDAO();
+			lDAO.setSession(session);
+			
+			RolesDAO rDAO = new RolesDAO();
+			rDAO.setSession(session);
+			
+			Login log = new Login();
+			log.setLogin(login);
+			log.setMdp(mdp);
+			
+			lDAO.insert(log);
+			
+			Roles role = new Roles();
+			RolePK rPK = new RolePK();
+			
+			rPK.setLogin(log);
+			rPK.setRole("participant");
+			role.setPk(rPK);
+		
+			rDAO.insert(role);
 			
 			Participant p = new Participant();
 			p.setLogin(login);
