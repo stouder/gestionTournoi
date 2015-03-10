@@ -13,8 +13,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.gestionTournoi.dao.InscriptionDAO;
+import com.gestionTournoi.dao.TournoiDAO;
 import com.gestionTournoi.metiers.Inscription;
-import com.gestionTournoi.metiers.Tournoi;
 
 @ManagedBean(name = "listeInscrits")
 @ApplicationScoped
@@ -42,6 +42,10 @@ public class ListeInscrits {
 		
 		InscriptionDAO iDAO = new InscriptionDAO();
 		iDAO.setSession(s);
+		TournoiDAO tDAO = new TournoiDAO();
+		tDAO.setSession(s);
+		
+		//List<Tournoi> list = tDAO.getAll();
 		
 		inscrits.addAll(iDAO.getAll());
 		

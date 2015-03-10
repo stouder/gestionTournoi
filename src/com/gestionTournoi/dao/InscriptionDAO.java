@@ -28,19 +28,8 @@ public class InscriptionDAO implements GenericDAO<Inscription> {
 
 	@Override
 	public List<Inscription> getAll() {
-		//Query req = session.createQuery("from Inscription i join i.participant");
-		//List<Inscription> liste = req.list();
-		
-//		for(Iterator ite = (Iterator) liste.iterator();ite.hasNext();){
-//			Object[] inscritEtParticipant = (Object[])ite.next();
-//			
-//			Inscription i = (Inscription)inscritEtParticipant[0];
-//			Participant p = (Participant)inscritEtParticipant[1];
-//			
-//			System.out.println("Nom des inscrits : " + p.getNom());
-//		}
-		
 		Query req1 = session.createQuery("from Inscription i order by i.classement");
+		
 		List<Inscription> list = req1.list();
 		for(Inscription i:list){
 			System.out.println("i" + i.getParticpant().getNom());

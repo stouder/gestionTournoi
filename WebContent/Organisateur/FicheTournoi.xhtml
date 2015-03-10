@@ -4,104 +4,97 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<link type="text/css" rel="stylesheet" href="themes/bluesky/skin.css" />
-	<link type="text/css" rel="stylesheet" href="CSS/ficheOrganisateur.css" />
-</h:head>
-
-<h:body>
-
-	<h:form>
-		<p:panelGrid styleClass="panelGridCenter">
-
-			<p:row>
-				<p:column>
-					<p:outputLabel value="#{organisateurBean.tournoi.nom}"></p:outputLabel>
-				</p:column>
-			</p:row>
-
-			<p:row>
-				<p:column>
-					<p:outputLabel value="Liste des Inscrits au Tournoi"></p:outputLabel>
-				</p:column>
-			</p:row>
-			
-			<p:row>
-				<p:column>
-					<p:dataTable var="i" value="#{ficheTournoiBean.inscrits}"
-						editable="true">
-						<p:ajax event="rowEdit" listener="#{ficheTournoiBean.onRowEdit}" />
-						<p:ajax event="rowSelect"
-							listener="#{dtSelectionView.onRowSelect}" />
-						<p:ajax event="cellEdit" listener="#{ficheTournoiBean.onCellEdit}" />
-
-						<p:column headerText="Nom">
-							<p:cellEditor>
-								<f:facet name="input">
-									<h:inputText value="#{i.particpant.nom}" />
-								</f:facet>
-								<f:facet name="output">
-									<h:outputText value="#{i.particpant.nom}" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-
-						<p:column headerText="Tete de Serie">
-							<!-- 							<h:form> -->
-							<p:selectOneMenu value="#{i.teteDeSerie}"
-								valueChangeListener="#{ficheTournoiBean.testChange}"
-								onchange="submit()" width="30">
-								<f:selectItem itemLabel="1" itemValue="1"></f:selectItem>
-								<f:selectItem itemLabel="2" itemValue="2"></f:selectItem>
-								<!-- 									<p:ajax event="change" listener="#{ficheTournoiBean.serviceChange}" -->
-								<!-- 										update="test1" /> -->
-							</p:selectOneMenu>
-							<!-- 								<p:outputLabel value="Valeur du select"></p:outputLabel> -->
-							<!-- 								<p:outputLabel id="test1" value="#{ficheTournoiBean.testSelected}"></p:outputLabel> -->
-							<h:messages style="color:red"></h:messages>
-							<!-- 							</h:form> -->
-						</p:column>
-						
-						<p:column headerText="Classement">
-							<h:outputText value="#{i.classement}" />
-						</p:column>
-						<p:column style="width:32px">
-							<p:rowEditor />
-						</p:column>
-
-					</p:dataTable>
-
-					<p:messages></p:messages>
-				</p:column>
 
 
+<ui:composition template="/template/layout.xhtml">
 
-			</p:row>
-			<p:row>
-				<p:column>
-					<h:messages style="color:red"></h:messages>
-				</p:column>
-			</p:row>
-			<p:row>
-				<p:column>
-					<p:commandButton value="Valider" type="submit"
-						action="#{loginBean.valider}"></p:commandButton>
-				</p:column>
-			</p:row>
-		</p:panelGrid>
+	<ui:define name="header">Fiche de Tournoi</ui:define>
 
-	</h:form>
+	<ui:define name="content">
+		<h:form>
+			<p:panelGrid styleClass="panelGridCenter">
 
-	<!-- 	<h:form> -->
-	<!-- 		<h:panelGrid columns="3"> -->
-	<!-- 			<h:outputText value="Keyup: " /> -->
-	<!-- 			<p:inputText id="counter" value="#{ficheTournoiBean.test}"> -->
-	<!-- 				<p:ajax event="keyup" update="out" /> -->
-	<!-- 			</p:inputText> -->
-	<!-- 			<h:outputText id="out" value="#{ficheTournoiBean.test}" /> -->
-	<!-- 		</h:panelGrid> -->
-	<!-- 	</h:form> -->
-</h:body>
+				<p:row>
+					<p:column>
+						<p:outputLabel value="#{organisateurBean.tournoi.nom}"></p:outputLabel>
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column>
+						<p:outputLabel value="Liste des Inscrits au Tournoi"></p:outputLabel>
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column>
+						<p:dataTable var="i" value="#{ficheTournoiBean.inscrits}"
+							editable="true">
+							<p:ajax event="rowEdit" listener="#{ficheTournoiBean.onRowEdit}" />
+							<p:ajax event="rowSelect"
+								listener="#{dtSelectionView.onRowSelect}" />
+							<p:ajax event="cellEdit"
+								listener="#{ficheTournoiBean.onCellEdit}" />
+
+							<p:column headerText="Nom">
+								<p:cellEditor>
+									<f:facet name="input">
+										<h:inputText value="#{i.particpant.nom}" />
+									</f:facet>
+									<f:facet name="output">
+										<h:outputText value="#{i.particpant.nom}" />
+									</f:facet>
+								</p:cellEditor>
+							</p:column>
+
+							<p:column headerText="Tete de Serie">
+								<!-- 							<h:form> -->
+								<p:selectOneMenu value="#{i.teteDeSerie}"
+									valueChangeListener="#{ficheTournoiBean.testChange}"
+									onchange="submit()" width="30">
+									<f:selectItem itemLabel="1" itemValue="1"></f:selectItem>
+									<f:selectItem itemLabel="2" itemValue="2"></f:selectItem>
+									<!-- 									<p:ajax event="change" listener="#{ficheTournoiBean.serviceChange}" -->
+									<!-- 										update="test1" /> -->
+								</p:selectOneMenu>
+								<!-- 								<p:outputLabel value="Valeur du select"></p:outputLabel> -->
+								<!-- 								<p:outputLabel id="test1" value="#{ficheTournoiBean.testSelected}"></p:outputLabel> -->
+								<h:messages style="color:red"></h:messages>
+								<!-- 							</h:form> -->
+							</p:column>
+
+							<p:column headerText="Classement">
+								<h:outputText value="#{i.classement}" />
+							</p:column>
+							<p:column style="width:32px">
+								<p:rowEditor />
+							</p:column>
+
+						</p:dataTable>
+
+						<p:messages></p:messages>
+					</p:column>
+
+
+
+				</p:row>
+				<p:row>
+					<p:column>
+						<h:messages style="color:red"></h:messages>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:commandButton value="Tirage" type="submit"
+							action="#{tirageBean.tirage}"></p:commandButton>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
 </html>

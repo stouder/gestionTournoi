@@ -11,7 +11,20 @@
 </h:head>
 
 <h:body>
-	<p:outputLabel value="Test"></p:outputLabel>
+	<h:form>
 
+		<h:messages></h:messages>
+
+		<h:inputText label="champs nom" value="#{helloWorldManagedBean.name}"
+			required="true">
+
+			<f:validateLength maximum="15" minimum="3"></f:validateLength>
+
+		</h:inputText>
+
+		<h:commandButton value="Say Hello"
+			action="#{helloWorldManagedBean.sayHelloAction}"></h:commandButton>
+
+	</h:form>
 </h:body>
 </html>

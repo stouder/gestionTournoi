@@ -22,8 +22,8 @@
 	/* 	margin: 0 auto; */
 	background: #ccc;
 	width: 800px;
-	height: 200px;
-	line-height: 200px;
+	height: 400px;
+	line-height: 400px;
 	text-align: center; /* centrage horizontal */
 }
 
@@ -34,3 +34,4 @@
 	text-align: center;
 	margin: 0 auto;
 }
+

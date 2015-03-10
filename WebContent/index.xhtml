@@ -6,14 +6,18 @@
 	xmlns:p="http://primefaces.org/ui">
 
 
-
 <ui:composition template="/template/layout.xhtml">
+<!-- 	<f:facet name="last"> -->
+<!-- 		<h:outputStylesheet library="default" -->
+<!-- 			name="../css/ComposantPF.css" /> -->
+<!-- 	</f:facet> -->
+
+
 	<ui:define name="header">Page de présentation</ui:define>
 	<ui:define name="content">
 		<h:panelGroup layout="block" id="container" class="panelGridCenter">
-			<a href="Participant/FicheJoueur.xhtml">Accéder à la page
-				sécurisée</a>
-			<br></br>
+			<p:inputText styleClass="input"></p:inputText>
+			<p:calendar id="popup" styleClass="calendar"/>
 			<p:link outcome="new" value="Nouveau Utilisateur"></p:link>
 			<br></br>
 			<p:link outcome="admin" value="administration"></p:link>

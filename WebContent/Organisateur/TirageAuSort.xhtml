@@ -6,45 +6,46 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	
-<h:head>
-	<link type="text/css" rel="stylesheet" href="themes/bluesky/skin.css" />
-	<link type="text/css" rel="stylesheet" href="CSS/ficheOrganisateur.css" />
-</h:head>
 
-<h:body>
-	<h:form>
-		<p:messages autoUpdate="true" />
-		<p:panelGrid styleClass="panelGridCenter">
-			<p:row>
-				<p:column>
-					<p:selectOneMenu id="advanced" value="#{tirageBean.tournoi}"
-						converter="tournoiConverter" panelStyle="width:180px"
-						effect="fade" var="t" style="width:160px" filter="true"
-						filterMatchMode="startsWith">
+<ui:composition template="/template/layout.xhtml">
 
-						<f:selectItems value="#{tirageBean.tournois}"
-							var="tournoi" itemLabel="#{tournoi.nom}"
-							itemValue="#{tournoi}" />
-						<p:column>
-							<h:outputText value="#{t.nom}" />
-						</p:column>
-						<p:column>
-							<h:outputText value="#{t.id}" />
-						</p:column>
+	<ui:define name="header">
+		<h3>Tirage au Sort de Tournoi</h3>
+	</ui:define>
 
-					</p:selectOneMenu>
-				</p:column>
-			</p:row>
-			
-			<p:row>
-				<p:column colspan="2">
-					<p:commandButton value="Valider" type="submit"
-						action="#{tirageBean.valider}"></p:commandButton>
-				</p:column>
-			</p:row>
-		</p:panelGrid>
-	</h:form>
+	<ui:define name="content">
+		<h:form>
+			<p:messages autoUpdate="true" />
+			<p:panelGrid styleClass="panelGridCenter">
+				<p:row>
+					<p:column>
+						<p:selectOneMenu id="advanced" value="#{tirageBean.tournoi}"
+							converter="tournoiConverter" panelStyle="width:180px"
+							effect="fade" var="t" style="width:160px" filter="true"
+							filterMatchMode="startsWith">
 
-</h:body>
+							<f:selectItems value="#{tirageBean.tournois}" var="tournoi"
+								itemLabel="#{tournoi.nom}" itemValue="#{tournoi}" />
+							<p:column>
+								<h:outputText value="#{t.nom}" />
+							</p:column>
+							<p:column>
+								<h:outputText value="#{t.id}" />
+							</p:column>
+
+						</p:selectOneMenu>
+					</p:column>
+				</p:row>
+
+				<p:row>
+					<p:column colspan="2">
+						<p:commandButton value="Valider" type="submit"
+							action="#{tirageBean.valider}"></p:commandButton>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
 </html>

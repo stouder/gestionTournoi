@@ -2,6 +2,8 @@ package com.gestionTournoi.metiers;
 
 import java.io.IOException;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,6 +34,7 @@ public class InitServlet extends HttpServlet {
 		
 		config.getServletContext().setAttribute("EntityManager", sessionFactory);
 		System.out.println("servlet init");
+		
 	}
 	
     public InitServlet() {

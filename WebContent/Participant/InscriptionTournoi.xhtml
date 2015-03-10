@@ -1,28 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-
 <ui:composition template="/template/layout.xhtml">
-
-	<ui:define name="header">Creation de Tournoi</ui:define>
-
+	<ui:define name="header">Inscription aux Tournois</ui:define>
 	<ui:define name="content">
 		<h:form>
+			<p:messages autoUpdate="true" />
 			<p:panelGrid styleClass="panelGridCenter">
 				<p:row>
-					<p:column>
-						<p:selectOneMenu id="advanced" value="#{organisateurBean.tournoi}"
+					<p:column colspan="2">
+						<p:selectOneMenu id="advanced" value="#{inscriptionBean.tournoi}"
 							converter="tournoiConverter" panelStyle="width:180px"
 							effect="fade" var="t" style="width:160px" filter="true"
 							filterMatchMode="startsWith">
 
-							<f:selectItems value="#{organisateurBean.tournois}" var="tournoi"
+							<f:selectItems value="#{inscriptionBean.tournois}" var="tournoi"
 								itemLabel="#{tournoi.nom}" itemValue="#{tournoi}" />
 							<p:column>
 								<h:outputText value="#{t.nom}" />
@@ -36,13 +34,16 @@
 				</p:row>
 
 				<p:row>
-					<p:column>
-						<p:commandButton value="Valider" type="submit"
-							action="#{organisateurBean.valider}"></p:commandButton>
+					<p:column colspan="2">
+						<p:outputLabel for="classement" value="classement"></p:outputLabel>
+						<p:inputText id="classement" value="#{inscriptionBean.classement}"></p:inputText>
 					</p:column>
-					<p:column>
-						<p:commandButton value="Creation Tournoi" type="submit"
-							action="#{organisateurBean.creerTournoi}"></p:commandButton>
+				</p:row>
+
+				<p:row>
+					<p:column colspan="2">
+						<p:commandButton value="Valider" type="submit"
+							action="#{inscriptionBean.valider}"></p:commandButton>
 					</p:column>
 				</p:row>
 			</p:panelGrid>

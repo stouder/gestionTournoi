@@ -16,3 +16,18 @@
 	text-align: center;
 	margin: 0 auto;
 }
+
+.input {
+	width: 50px;
+	color: red;
+}
+
+.ui-datepicker{
+	
+}
+
+.calendar input {
+	width: 100px;
+	color:red;
+	font-size: 20px;
+}

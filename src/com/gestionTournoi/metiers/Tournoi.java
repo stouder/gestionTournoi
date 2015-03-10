@@ -1,13 +1,23 @@
 package com.gestionTournoi.metiers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
+@NamedQueries(value={@NamedQuery(name="tournoi.readByTournoiNonInscrit",query="from Tournoi t where t.id not in (select i.tournoi.id from Inscription i where i.particpant.id = :id)"),
+		@NamedQuery(name="tournoi.readTournoiByNom", query="from Tournoi t where t.nom = :nom")})
+
 @Table
 public class Tournoi {
 	@Id
@@ -18,7 +28,13 @@ public class Tournoi {
 	private String nom;
 	@Column
 	private int nbInscrit;
-
+	@Column
+	private boolean tAS;
+	
+	@OneToMany
+	@JoinColumn(name="tournoiID")
+	private List<Rencontre> rencontres = new ArrayList<Rencontre>();
+	
 	public int getId() {
 		return id;
 	}
@@ -43,6 +59,22 @@ public class Tournoi {
 		this.nbInscrit = nbInscrit;
 	}
 	
+	public boolean istAS() {
+		return tAS;
+	}
+
+	public void settAS(boolean tAS) {
+		this.tAS = tAS;
+	}
+	
+	public List<Rencontre> getRencontres() {
+		return rencontres;
+	}
+
+	public void setRencontres(List<Rencontre> rencontres) {
+		this.rencontres = rencontres;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 	    if(this.id == ((Tournoi) obj).id) {

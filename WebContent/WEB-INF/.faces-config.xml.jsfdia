@@ -24,7 +24,11 @@
     TARGET="rules:#InscriptionTournoi.xhtml" TITLE="participant" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="organisateur::#FicheOrganisteur.xhtml"
     NAME="output1" PATH="/FicheOrganisteur.xhtml"
+    SHAPE="561,104,608,104,608,240,328,240,328,376,343,376"
     TARGET="rules:#FicheOrganisteur.xhtml" TITLE="organisateur" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="new::#NouveauUtilisateur.xhtml"
+    NAME="output2" PATH="/NouveauUtilisateur.xhtml"
+    TARGET="rules:#NouveauUtilisateur.xhtml" TITLE="new" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#InscriptionTournoi.xhtml"

@@ -1,5 +1,6 @@
 package com.gestionTournoi.managedBean;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
@@ -11,12 +12,14 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.gestionTournoi.dao.InscriptionDAO;
 import com.gestionTournoi.dao.ParticipantDAO;
 import com.gestionTournoi.dao.RencontreDAO;
+import com.gestionTournoi.dao.TournoiDAO;
 import com.gestionTournoi.metiers.Inscription;
 import com.gestionTournoi.metiers.Participant;
 import com.gestionTournoi.metiers.Rencontre;
@@ -63,7 +66,7 @@ public class TirageBean {
 		this.service = service;
 	}
 
-	public String valider(){
+	public String tirage(){
 		
 		HttpSession httpSession = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 		SessionFactory sf = (SessionFactory)httpSession.getServletContext().getAttribute("EntityManager");
@@ -73,12 +76,37 @@ public class TirageBean {
 		iDAO.setSession(session);
 		List<Inscription> list = iDAO.getAll();
 		
+		TournoiDAO tDAO = new TournoiDAO();
+		tDAO.setSession(session);
+		
 		RencontreDAO rDAO = new RencontreDAO();
 		rDAO.setSession(session);
-		List<Rencontre> listeRencontre = rDAO.getAll();
 		
 		ParticipantDAO pDAO = new ParticipantDAO();
 		pDAO.setSession(session);
+		
+		Query reqTournoi = session.getNamedQuery("tournoi.readTournoiByNom");
+		Tournoi tournoi = (Tournoi)reqTournoi.setParameter("nom", "Rolland Garros").list().get(0);
+		
+		//System.out.println("Tournoi : " +tournoi.getNom());
+		
+		int nbRencontres = tournoi.getNbInscrit()/2;
+		
+		List<Rencontre> listeRencontre = new ArrayList<Rencontre>();
+		Rencontre rencontreCreation;
+		
+		for(int i=0;i<nbRencontres;i++){
+			rencontreCreation = new Rencontre();
+			rDAO.insert(rencontreCreation);
+			tournoi.getRencontres().add(rencontreCreation);
+			tDAO.insert(tournoi);
+		}
+		
+		
+		
+//		List<Rencontre> listeRencontre = rDAO.getAll();
+		
+		
 		
 		for(Inscription l:list){
 			System.out.println("Inscription : " + l.getParticpant().getNom());
@@ -100,7 +128,7 @@ public class TirageBean {
 			
 			int nombreAleatoire = rand.nextInt(max - min) + min;
 			if(iRencontre%2 != 0){
-				//System.out.println("Rentre dans if");
+				System.out.println("Rentre dans if");
 				iRencontre++;
 			}
 			
@@ -115,13 +143,16 @@ public class TirageBean {
 			rencontre.getParticipants().add(p);
 			
 			pDAO.insert(p);
-			//System.out.println("NbInscrt : " + nbInscrit);
-			//System.out.println(list.get(nombreAleatoire).getId());
+			System.out.println("NbInscrt : " + nbInscrit);
+			System.out.println(list.get(nombreAleatoire).getId());
 			
 			list.remove(nombreAleatoire);
 			max--;
+			if(max==0){
+				
+			}
 		}
-	
+		
 		return null;
 	}
 	

@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.gestionTournoi.metiers.Inscription;
 import com.gestionTournoi.metiers.Tournoi;
 
 
@@ -25,6 +26,7 @@ public class TournoiDAO implements GenericDAO<Tournoi> {
 		tx.commit();
 	}
 
+
 	@Override
 	public List<Tournoi> getAll() {
 		Query query = session.createQuery("from Tournoi");
@@ -32,5 +34,7 @@ public class TournoiDAO implements GenericDAO<Tournoi> {
 		
 		return liste;
 	}
-
+	
+	
+	
 }

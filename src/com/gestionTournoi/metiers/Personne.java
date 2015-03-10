@@ -14,7 +14,9 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@NamedQueries(value={@NamedQuery(name="personne.readByLogin",query="From Personne p where p.login=:login and p.mdp=:mdp")})
+@NamedQueries(value={
+		//@NamedQuery(name="personne.readByLogin",query="From Personne p where p.login=:login and p.mdp=:mdp"),
+					@NamedQuery(name="personne.readByName",query="From Personne p where p.login=:login")})
 
 @Table(name="Personne")
 @Inheritance(strategy=InheritanceType.JOINED)
@@ -23,7 +25,7 @@ public class Personne {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id_personne", unique = true, nullable = false)
 	private int id;
-//	
+
 	@Column(name="Nom")
 	private String nom;
 	

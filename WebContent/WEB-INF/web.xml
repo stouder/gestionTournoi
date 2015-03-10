@@ -7,11 +7,11 @@
 	<welcome-file-list>
 		<welcome-file>Connexion.xhtml</welcome-file>
 	</welcome-file-list>
-	
+
 	<session-config>
 		<session-timeout>1</session-timeout>
 	</session-config>
-	
+
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -28,7 +28,8 @@
 			<url-pattern>/Organisateur/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
-			<role-name>dude</role-name>
+			<description>organisateur</description>
+			<role-name>organisateur</role-name>
 		</auth-constraint>
 	</security-constraint>
 
@@ -38,10 +39,11 @@
 			<url-pattern>/Participant/*</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
-			<role-name>dude</role-name>
+			<description>participant</description>
+			<role-name>participant</role-name>
 		</auth-constraint>
 	</security-constraint>
-	
+
 	<login-config>
 		<auth-method>FORM</auth-method>
 		<realm-name>Espace Membre</realm-name>
@@ -50,12 +52,10 @@
 			<form-error-page>/login-error.xhtml</form-error-page>
 		</form-login-config>
 	</login-config>
-
-	<security-role>
-		<description>adminstrateur</description>
-		<role-name>dude</role-name>
-	</security-role>
-
-
+	
+	 <error-page>
+	    <error-code>403</error-code>
+	    <location>/error/403-error.xhtml</location>
+	</error-page>
 </web-app>
 

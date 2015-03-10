@@ -1,18 +1,22 @@
 package com.gestionTournoi.managedBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.component.html.HtmlCommandLink;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.gestionTournoi.dao.InscriptionDAO;
-import com.gestionTournoi.dao.ParticipantDAO;
+import com.gestionTournoi.dao.PersonneDAO;
+import com.gestionTournoi.dao.TournoiDAO;
 import com.gestionTournoi.metiers.Inscription;
 import com.gestionTournoi.metiers.Participant;
 import com.gestionTournoi.metiers.Tournoi;
@@ -24,13 +28,18 @@ public class InscriptionBean {
 	private List<Tournoi> tournois;
 	private String nom;
 	private String classement;
+	private Participant p;
 	
-	@ManagedProperty("#{listeTournois}")
-	private ListeTournois service;
-
-	@PostConstruct
-	public void init() {
-		tournois = service.getTournois();
+	
+	public InscriptionBean() {
+		HttpSession httpSession = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		SessionFactory sf = (SessionFactory)httpSession.getServletContext().getAttribute("EntityManager");
+		Session session = sf.openSession();
+		String nomAuth =  FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName();
+		
+		PersonneDAO pDAO = new PersonneDAO();
+		pDAO.setSession(session);
+		p = (Participant)pDAO.searchLogin(nomAuth);
 	}
 	
 	public Tournoi getTournoi() {
@@ -43,6 +52,19 @@ public class InscriptionBean {
 	
 	
 	public List<Tournoi> getTournois() {
+		tournois = new ArrayList<Tournoi>();
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		SessionFactory sessionFactory = (SessionFactory) session.getServletContext().getAttribute("EntityManager");
+		Session s = sessionFactory.openSession();
+		
+		System.out.println("Id de Participant :" + p.getId());
+		
+		Query query = s.getNamedQuery("tournoi.readByTournoiNonInscrit");
+		query.setParameter("id", p.getId());
+		tournois = query.list();
+
+		s.close();
+		
 		return tournois;
 	}
 
@@ -66,24 +88,23 @@ public class InscriptionBean {
 		this.classement = classement;
 	}
 
-	public ListeTournois getService() {
-		return service;
-	}
-
-	public void setService(ListeTournois service) {
-		this.service = service;
-	}
-
 	public String valider(){
 		HttpSession httpSession = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 		SessionFactory sf = (SessionFactory)httpSession.getServletContext().getAttribute("EntityManager");
 		Session session = sf.openSession();
+		String nomAuth =  FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName();
 		
-		Participant p = (Participant)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("personne");
+//		Query query = session.getNamedQuery("Personne.readByName");
+//		query.setParameter("login",nomAuth);
+//		Participant p = (Participant)query.list().get(0);
+			
+		PersonneDAO pDAO = new PersonneDAO();
+		pDAO.setSession(session);
+		Participant p = (Participant)pDAO.searchLogin(nomAuth);
 		
 		InscriptionDAO iDAO = new InscriptionDAO();
 		iDAO.setSession(session);
-		iDAO.dejaInscrit(p);
+		
 		Inscription inscription = new Inscription();
 		inscription.setTournoi(tournoi);
 		inscription.setParticpant(p);

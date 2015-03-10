@@ -11,14 +11,19 @@
 	<ui:define name="header">Nouvel Utilisateur</ui:define>
 	<ui:define name="content">
 		<h:form>
+		 
 			<p:panelGrid styleClass="panelGridCenter">
+			 
 				<p:row>
 					<p:column>
 						<p:outputLabel value="Nom"></p:outputLabel>
 					</p:column>
 					<p:column>
 						<p:inputText id="login" value="#{nouveauUtilisateur.login}">
+						<f:validateLength maximum="15" minimum="3"></f:validateLength>
 						</p:inputText>
+						<p:messages id="messages" autoUpdate="true" closable="true" />
+
 					</p:column>
 
 				</p:row>
@@ -51,11 +56,19 @@
 							action="#{nouveauUtilisateur.enregistrer}"></p:commandButton>
 					</p:column>
 				</p:row>
+				<p:row>
+					<p:column>
+						<h:messages style="color:red" globalOnly="true"></h:messages>
+					</p:column>
+					<p:column>
+						test de message
+					</p:column>
+				</p:row>
 			</p:panelGrid>
 
 		</h:form>
 
-		<p:messages></p:messages>
+		
 	</ui:define>
 </ui:composition>
 

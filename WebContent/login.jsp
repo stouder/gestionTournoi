@@ -5,6 +5,7 @@
 
 	<div align="center">
 		<h1>Veuillez vous identifier</h1>
+		
 	</div>
 	
 	<form method="POST" action="j_security_check">

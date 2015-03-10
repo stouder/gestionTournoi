@@ -4,33 +4,26 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<link type="text/css" rel="stylesheet" href="themes/bluesky/skin.css" />
-	<link type="text/css" rel="stylesheet" href="CSS/ficheOrganisateur.css" />
-</h:head>
+<ui:composition template="/template/layout.xhtml">
 
-<h:body>
-<!-- 	<h:panelGroup layout="block"  class="panelGridCenter"> -->
-<!-- 			<p:outputLabel value="#{ficheJoueurBean.nom}"></p:outputLabel> -->
-<!-- 	</h:panelGroup> -->
+	<ui:define name="content">
+		<p:panelGrid styleClass="panelGridCenter">
 
-	<p:panelGrid styleClass="panelGridCenter">
-    
-		<p:row>
-			<p:column>
-				<p:outputLabel value="Liste des inscriptions à des Tournois"></p:outputLabel>
-			</p:column>
-		</p:row>
+			<p:row>
+				<p:column>
+					<p:outputLabel value="Liste des inscriptions à des Tournois"></p:outputLabel>
+					<p:calendar id="popup"/>
+				</p:column>
+			</p:row>
+		</p:panelGrid>
 
-	</p:panelGrid>
+		<h:panelGroup layout="block" class="panelGridCenter">
+			<p:link outcome="inscription" value="Inscription à des tournois"></p:link>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>
 
-	<h:panelGroup layout="block"  class="panelGridCenter">
-		<p:link outcome="inscription" value="Inscription à des tournois">
-			<f:param name="productId" />
-		</p:link>
-	</h:panelGroup>
-
-</h:body>
 </html>

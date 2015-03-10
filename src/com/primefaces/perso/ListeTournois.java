@@ -19,36 +19,35 @@ import com.gestionTournoi.metiers.Tournoi;
 @ApplicationScoped
 public class ListeTournois {
 	private List<Tournoi> tournois;
-	
+
 	public ListeTournois() {
-		
+
 	}
-	
+
 	@PostConstruct
 	public void init() {
-		
 
 	}
 
 	public List<Tournoi> getTournois() {
 		tournois = new ArrayList<Tournoi>();
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-		SessionFactory sessionFactory = (SessionFactory) session.getServletContext().getAttribute("EntityManager");
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+				.getExternalContext().getSession(true);
+		SessionFactory sessionFactory = (SessionFactory) session
+				.getServletContext().getAttribute("EntityManager");
 		Session s = sessionFactory.openSession();
-		
-		System.out.println("Construcion de liste Tournoi");
-		
+
+
 		TournoiDAO tDAO = new TournoiDAO();
 		tDAO.setSession(s);
-		
-		tournois.addAll(tDAO.getAll());
-		
+
+		//List<Tournoi> list = tDAO.getNonInscritAll();
+
+		//tournois.addAll(tDAO.getNonInscritAll());
+
 		s.close();
-		
+
 		return tournois;
 	}
-	
-	
-	
-	
+
 }
