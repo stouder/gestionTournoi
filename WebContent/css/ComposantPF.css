@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+
+.input{
+	width:200px;
+	color:red;
+}
+
+.calendar .ui-datepicker{
+	width:10px;
+	text-color:red;
+	background-color : green;
+	
+}
+
