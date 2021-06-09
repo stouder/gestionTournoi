@@ -35,14 +35,15 @@
         					<containerId>tomcat9x</containerId>
         					<type>remote</type>
     					</container>
-    				<configuration>
-        				<type>runtime</type>
-        				<properties>
-            					<cargo.remote.username>war-deployer</cargo.remote.username>
-            					<cargo.remote.password>Maxwell053</cargo.remote.password>
-            					<cargo.tomcat.manager.url>http://localhost:9180/manager/text</cargo.tomcat.manager.url>
-        				</properties>
-				</configuration>
+    					<configuration>
+        					<type>runtime</type>
+        					<properties>
+            						<cargo.remote.username>war-deployer</cargo.remote.username>
+            						<cargo.remote.password>Maxwell053</cargo.remote.password>
+            						<cargo.tomcat.manager.url>http://localhost:9180/manager/text</cargo.tomcat.manager.url>
+        					</properties>
+					</configuration>
+				</configuration>		
        			</plugin>
 		</plugins>
 	</build>
