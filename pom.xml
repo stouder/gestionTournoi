@@ -30,21 +30,29 @@
             			<groupId>org.codehaus.cargo</groupId>
             			<artifactId>cargo-maven2-plugin</artifactId>
             			<version>1.7.6</version>
-<configuration>
-                    <container>
-                        <containerId>tomcat9x</containerId>
-                        <type>embedded</type>
-                    </container>
-                    <deployables>
-                        <deployable>
-                            <type>war</type>
-                            <location>${project.build.directory}/${project.build.finalName}.war</location>
-                            <properties>
-                                <context>/</context>
-                            </properties>
-                        </deployable>
-                    </deployables>
-                </configuration>		
+			<configuration>
+                    		<container>
+                        		<containerId>tomcat9x</containerId>
+                        		<type>remote</type>
+                    		</container>
+				<configuration>
+            				<type>remote</type> 
+            					<properties>
+                					<cargo.tomcat.manager.url>http://172.18.0.101:8080/manager</cargo.tomcat.manager.url>
+                					<cargo.remote.username>war-deployer</cargo.remote.username>
+                					<cargo.remote.password>Maxwell053</cargo.remote.password>
+            					</properties>
+        			</configuration>
+                    		<deployables>
+                        		<deployable>
+                            			<type>war</type>
+                            			<location>${project.build.directory}/${project.build.finalName}.war</location>
+                            			<properties>
+                                			<context>/</context>
+                            			</properties>
+                        		</deployable>
+                    		</deployables>
+                	</configuration>		
        			</plugin>
 		</plugins>
 	</build>
