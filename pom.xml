@@ -29,21 +29,13 @@
 			<plugin>
             			<groupId>org.codehaus.cargo</groupId>
             			<artifactId>cargo-maven2-plugin</artifactId>
-            			<version>1.5.0</version>
+            			<version>1.7.6</version>
 				<configuration>
     					<container>
-        					<containerId>tomcat9x</containerId>
-        					<type>remote</type>
+      						<containerId>tomcat9x</containerId>
+      						<type>embedded</type>
     					</container>
-    					<configuration>
-        					<type>runtime</type>
-        					<properties>
-            						<cargo.remote.username>war-deployer</cargo.remote.username>
-            						<cargo.remote.password>Maxwell053</cargo.remote.password>
-            						<cargo.tomcat.manager.url>http://172.18.0.101:9180/manager/text</cargo.tomcat.manager.url>
-        					</properties>
-					</configuration>
-				</configuration>		
+  				</configuration>		
        			</plugin>
 		</plugins>
 	</build>
