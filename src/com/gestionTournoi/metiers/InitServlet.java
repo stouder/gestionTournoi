@@ -16,6 +16,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
+ * Test de git
  * Servlet implementation class InitServlet
  */
 @WebServlet(value={"/InitServlet"},loadOnStartup=1)
